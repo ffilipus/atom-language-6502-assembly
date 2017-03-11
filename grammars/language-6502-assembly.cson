@@ -1,0 +1,62 @@
+fileTypes: [
+  'asm'
+  'asx'
+]
+name: '6502 Assembly'
+patterns: [
+  {
+    include: '#comments'
+  }
+  {
+    include: "#constants"
+  }
+  {
+    include: "#mnemonics"
+  }
+  {
+    include: "#entities"
+  }
+]
+repository:
+  constants:
+    patterns: [
+      {
+        match: "\\b\\#?(?i:(\\$\\h*))"
+        name: "constant.numeric.hex"
+      }
+      {
+        match: "\\b\\#?[0-9]+\\b"
+        name: "constant.numeric.dec"
+      }
+      {
+        match: "\\b\\%[01]+\\b"
+        name: "constant.numeric.bin"
+      }
+    ]
+  mnemonics:
+    patterns: [
+      {
+        match: "\\b(?i:(adc|and|asl|bcc|bcs|beq|bit|bmi|bne|bpl|brk|bvc|bvs|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|jmp|jsr|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|rti|rts|sbc|sec|sed|sei|sta|stx|sty|tax|tay|tsx|txa|txs|tya))\\b"
+        name: "keyword.mnemonic.general-purpose"
+      }
+    ]
+  entities:
+    patterns: [
+      {
+        match: "^\\w+\\b"
+        name: "text.variable"
+      }
+      {
+        match: "\\b(?i:(ift|els|eli|eif|ert|equ|set|ext|opt|org|ins|icl|dta|dta|run|ini|end|sin|rnd|blk|smb|nmb|rmb|lmb))\\b"
+        name: "keyword.pseudo-mnemonic.general-purpose"
+      }
+    ]
+  comments:
+    patterns: [
+      {
+        match: "(;|\\*).*$"
+        name: "comment.line"
+      }
+    ]
+
+'scopeName': 'text.6502-assembly'
