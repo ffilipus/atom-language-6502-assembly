@@ -21,12 +21,12 @@ repository:
   constants:
     patterns: [
       {
-        match: "\\b\\#?(?i:(\\$\\h*))"
-        name: "constant.numeric.hex"
+        match: "\\b[0-9]+\\b"
+        name: "constant.numeric.dec"
       }
       {
-        match: "\\b\\#?[0-9]+\\b"
-        name: "constant.numeric.dec"
+        match: "\\$[0-9a-fA-F]+\\b"
+        name: "constant.numeric.hex"
       }
       {
         match: "\\b\\%[01]+\\b"
